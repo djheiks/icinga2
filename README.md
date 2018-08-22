@@ -23,7 +23,6 @@ This build is automated by push for the git-repo. Just crawl it via:
    - icingaweb2-businessprocess module
    - icingaweb2-grafana module
    - ssmtp
-   - MySQL
    - Supervisor
    - Apache2
    - SSL Support
