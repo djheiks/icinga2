@@ -2,11 +2,13 @@
 
 This repository contains the source for the [icinga2](https://www.icinga.org/icinga2/) [docker](https://www.docker.com) image.
 
-The dockerhub-repository is located at [https://hub.docker.com/r/jordan/icinga2/](https://hub.docker.com/r/jordan/icinga2/).
+The dockerhub-repository is located at [https://hub.docker.com/r/fastjack/icinga2/](https://hub.docker.com/r/fastjack/icinga2/).
+
+This is a fork of [https://hub.docker.com/r/jordan/icinga2/](https://hub.docker.com/r/jordan/icinga2/) with some additional modules and other adjustments.
 
 This build is automated by push for the git-repo. Just crawl it via:
 
-    docker pull jordan/icinga2
+    docker pull fastjack/icinga2
 
 ## Image details
 
@@ -30,7 +32,7 @@ This build is automated by push for the git-repo. Just crawl it via:
 
 Start a new container and bind to host's port 80
 
-    docker run -p 80:80 -h icinga2 -t jordan/icinga2:latest
+    docker run -p 80:80 -h icinga2 -t fastjack/icinga2:latest
 
 ## Icinga Web 2
 
@@ -42,7 +44,7 @@ If you want to save your php-sessions over multiple boots, mount `/var/lib/php/s
 
 example:
 ```
-docker run [...] -v $PWD/icingaweb2-sessions:/var/lib/php/sessions/ jordan/icinga2
+docker run [...] -v $PWD/icingaweb2-sessions:/var/lib/php/sessions/ fastjack/icinga2
 ```
 
 ## Graphite
@@ -57,12 +59,16 @@ docker run -t \
   -e ICINGA2_FEATURE_GRAPHITE=true \
   -e ICINGA2_FEATURE_GRAPHITE_HOST=graphite \
   -e ICINGA2_FEATURE_GRAPHITE_PORT=2003 \
-  jordan/icinga2:latest
+  fastjack/icinga2:latest
 ```
 
 ## Icinga Director
 
 The [Icinga Director](https://github.com/Icinga/icingaweb2-module-director) Icinga Web 2 module is installed and enabled by default. You can disable the automatic kickstart when the container starts by setting the `DIRECTOR_KICKSTART` variable to false. To customize the kickstart settings, modify the `/etc/icingaweb2/modules/director/kickstart.ini`.
+
+## Business Process
+
+The [Business Process](https://github.com/Icinga/icingaweb2-module-businessprocess) is installed but not enabled by default. You can enable it in Icinga Web 2 under Configuration > Modules > businessprocess .
 
 ## API Master
 

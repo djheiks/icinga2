@@ -1,9 +1,9 @@
 # Dockerfile for icinga2 with icingaweb2
-# https://github.com/jjethwa/icinga2
+# https://github.com/fastjack/icinga2
 
 FROM debian:stretch
 
-MAINTAINER Jordan Jethwa
+MAINTAINER Martin Maciaszek
 
 ENV APACHE2_HTTP=REDIRECT \
     ICINGA2_FEATURE_GRAPHITE=false \
