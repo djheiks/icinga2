@@ -66,6 +66,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
 ARG GITREF_DIRECTOR=master
 ARG GITREF_MODGRAPHITE=master
 ARG GITREF_MODAWS=master
+ARG GITREF_BUSINESSPROCESS=master
 
 RUN mkdir -p /usr/local/share/icingaweb2/modules/ \
 # Icinga Director
@@ -83,6 +84,10 @@ RUN mkdir -p /usr/local/share/icingaweb2/modules/ \
  && wget -q --no-cookies "https://github.com/aws/aws-sdk-php/releases/download/2.8.30/aws.zip" \
  && unzip -d /usr/local/share/icingaweb2/modules/aws/library/vendor/aws aws.zip \
  && rm aws.zip \
+# Business Process
+ && mkdir -p /usr/local/share/icingaweb2/modules/businessprocess \
+ && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-businessprocess/archive/${GITREF_BUSINESSPROCESS}.tar.gz" \
+ | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/businessprocess --exclude=.gitignore -f - \
  && true
 
 ADD content/ /
