@@ -70,7 +70,11 @@ The [Icinga Director](https://github.com/Icinga/icingaweb2-module-director) Icin
 
 ## Business Process
 
-The [Business Process](https://github.com/Icinga/icingaweb2-module-businessprocess) is installed but not enabled by default. You can enable it in Icinga Web 2 under Configuration > Modules > businessprocess .
+The [Business Process](https://github.com/Icinga/icingaweb2-module-businessprocess) is installed but not enabled by default. You can enable it in Icinga Web 2 under Configuration > Modules > businessprocess.
+
+## Grafana module
+
+The [Grafana module](https://github.com/Mikesch-mp/icingaweb2-module-grafana) is installed but not enabled by default. You can enable it in Icinga Web 2 under Configuration > Modules > grafana.
 
 ## API Master
 
