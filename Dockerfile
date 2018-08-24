@@ -28,6 +28,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
       lsb-release \
       mailutils \
       mariadb-client \
+      netbase \
       php-curl \
       php-ldap \
       php-mysql \
