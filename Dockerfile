@@ -25,6 +25,8 @@ RUN export DEBIAN_FRONTEND=noninteractive \
       dnsutils \
       gnupg \
       libdbd-mysql-perl \
+      libdigest-hmac-perl \
+      libnet-snmp-perl \
       locales \
       lsb-release \
       mailutils \
