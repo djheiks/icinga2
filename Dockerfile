@@ -98,7 +98,7 @@ RUN mkdir -p /usr/local/share/icingaweb2/modules/ \
  | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/businessprocess --exclude=.gitignore -f - \
 # Grafana
  && mkdir -p /usr/local/share/icingaweb2/modules/grafana \
- && wget -q --no-cookies -O - "https://github.com/Mikesch-mp/icingaweb2-module-grafana/archive/${GITREF_BUSINESSPROCESS}.tar.gz" \
+ && wget -q --no-cookies -O - "https://github.com/Mikesch-mp/icingaweb2-module-grafana/archive/${GITREF_GRAFANA}.tar.gz" \
  | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/grafana --exclude=.gitignore -f - \
 # Cube
  && mkdir -p /usr/local/share/icingaweb2/modules/cube \
