@@ -74,6 +74,7 @@ ARG GITREF_MODGRAPHITE=master
 ARG GITREF_MODAWS=master
 ARG GITREF_BUSINESSPROCESS=master
 ARG GITREF_GRAFANA=master
+ARG GITREF_CUBE=master
 
 RUN mkdir -p /usr/local/share/icingaweb2/modules/ \
 # Icinga Director
@@ -99,6 +100,10 @@ RUN mkdir -p /usr/local/share/icingaweb2/modules/ \
  && mkdir -p /usr/local/share/icingaweb2/modules/grafana \
  && wget -q --no-cookies -O - "https://github.com/Mikesch-mp/icingaweb2-module-grafana/archive/${GITREF_BUSINESSPROCESS}.tar.gz" \
  | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/grafana --exclude=.gitignore -f - \
+# Cube
+ && mkdir -p /usr/local/share/icingaweb2/modules/cube \
+ && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-cube/archive/${GITREF_CUBE}.tar.gz" \
+ | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/cube --exclude=.gitignore -f - \
  && true
 
 ADD content/ /
