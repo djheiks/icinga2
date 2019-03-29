@@ -75,6 +75,7 @@ ARG GITREF_MODAWS=master
 ARG GITREF_BUSINESSPROCESS=master
 ARG GITREF_GRAFANA=master
 ARG GITREF_CUBE=master
+ARG GITREF_IPL=v0.2.0
 
 RUN mkdir -p /usr/local/share/icingaweb2/modules/ \
 # Icinga Director
@@ -92,6 +93,10 @@ RUN mkdir -p /usr/local/share/icingaweb2/modules/ \
  && wget -q --no-cookies "https://github.com/aws/aws-sdk-php/releases/download/2.8.30/aws.zip" \
  && unzip -d /usr/local/share/icingaweb2/modules/aws/library/vendor/aws aws.zip \
  && rm aws.zip \
+# Icinga PHP Library (IPL)
+ && mkdir -p /usr/local/share/icingaweb2/modules/ipl \
+ && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-ipl/archive/${GITREF_IPL}.tar.gz" \
+ | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/ipl --exclude=.gitignore -f - \
 # Business Process
  && mkdir -p /usr/local/share/icingaweb2/modules/businessprocess \
  && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-businessprocess/archive/${GITREF_BUSINESSPROCESS}.tar.gz" \
