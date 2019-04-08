@@ -3,7 +3,7 @@
 
 FROM debian:stretch
 
-MAINTAINER Martin Maciaszek
+LABEL maintainer="martin@maciaszek.net"
 
 ENV APACHE2_HTTP=REDIRECT \
     ICINGA2_FEATURE_GRAPHITE=false \
