@@ -63,6 +63,7 @@ if evaluate_boolean "${ICINGA2_FEATURE_X509}"; then
 
     # Configure backend
 		mkdir -p /etc/icingaweb2/modules/x509
+		chown -R www-data:icingaweb2 /etc/icingaweb2/modules/x509
 		#touch /etc/icingaweb2/modules/x509/config.ini
     ini_set /etc/icingaweb2/modules/x509/config.ini backend resource "x509_db"
 
