@@ -7,9 +7,10 @@ if evaluate_boolean "${ICINGA2_FEATURE_BUSINESSPROCESS}"; then
 	echo "=> Enabling Icingaweb2 Business Process module"
 
 	# icingaweb-businessprocess (and dependency)
-	icingacli module enable ipl businessprocess
+	icingacli module enable ipl
+	icingacli module enable businessprocess
 
 else
 	# Actively disable businessprocess, to not hit any weird bugs
-	icingacli module disable businessprocess ipl || true
+	icingacli module disable businessprocess || true
 fi
