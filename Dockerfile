@@ -37,6 +37,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
       openssh-client \
       openssl \
       php-curl \
+      php-gmp \
       php-ldap \
       php-mysql \
       procps \
@@ -75,7 +76,9 @@ ARG GITREF_MODAWS=master
 ARG GITREF_BUSINESSPROCESS=master
 ARG GITREF_GRAFANA=master
 ARG GITREF_CUBE=master
-ARG GITREF_IPL=v0.2.0
+ARG GITREF_IPL=v0.2.1
+ARG GITREF_REACT=v0.5.1
+ARG GITREF_X509=master
 
 RUN mkdir -p /usr/local/share/icingaweb2/modules/ \
 # Icinga Director
@@ -101,6 +104,14 @@ RUN mkdir -p /usr/local/share/icingaweb2/modules/ \
  && mkdir -p /usr/local/share/icingaweb2/modules/businessprocess \
  && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-businessprocess/archive/${GITREF_BUSINESSPROCESS}.tar.gz" \
  | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/businessprocess --exclude=.gitignore -f - \
+# React bundle
+ && mkdir -p /usr/local/share/icingaweb2/modules/react \
+ && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-reactbundle/archive/${GITREF_REACT}.tar.gz" \
+ | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/react --exclude=.gitignore -f - \
+# X509
+ && mkdir -p /usr/local/share/icingaweb2/modules/x509 \
+ && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-x509/archive/${GITREF_X509}.tar.gz" \
+ | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/x509 --exclude=.gitignore -f - \
 # Grafana
  && mkdir -p /usr/local/share/icingaweb2/modules/grafana \
  && wget -q --no-cookies -O - "https://github.com/Mikesch-mp/icingaweb2-module-grafana/archive/${GITREF_GRAFANA}.tar.gz" \
