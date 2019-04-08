@@ -66,6 +66,11 @@ if evaluate_boolean "${ICINGA2_FEATURE_X509}"; then
 		#touch /etc/icingaweb2/modules/x509/config.ini
     ini_set /etc/icingaweb2/modules/x509/config.ini backend resource "x509_db"
 
+		# Import default CAs?
+		if evaluate_boolean "${ICINGAWEB2_X509_IMPORT_DEFAULT_CAS}"; then
+			echo "=> Import default CAs"
+			icingacli x509 import --file /etc/ssl/certs/ca-certificates.crt
+		fi
 else
     # Actively disable X.509 module
     icingacli module disable x509 || true
