@@ -22,6 +22,7 @@ This build is automated by push for the git-repo. Just crawl it via:
    - icingaweb2-module-aws
    - icingaweb2-businessprocess module
    - icingaweb2-grafana module
+   - icingaweb2-x509 module
    - ssmtp
    - Supervisor
    - Apache2
@@ -144,7 +145,7 @@ To connect the container with the MySQL server, you have fine granular control v
 
 All variables are a combination of the service and the property with the format `<SERVICE>_MYSQL_<PROPERTY>`, while
 
-- `<SERVICE>` can be one of `ICINGA2_IDO`, `ICINGAWEB2`, `ICINGAWEB2_DIRECTOR`
+- `<SERVICE>` can be one of `ICINGA2_IDO`, `ICINGAWEB2`, `ICINGAWEB2_DIRECTOR`, `ICINGAWEB2_X509`
 - `<PROPERTY>` can be one of `HOST`, `PORT`, `DATA`, `USER`, `PASS`
 
 The variables default their respective `DEFAULT` service variable.
@@ -155,6 +156,7 @@ The variables default their respective `DEFAULT` service variable.
 	- `ICINGA2_IDO_MYSQL_DATA`: The database for icinga2 IDO (defaults to `icinga2idomysql`)
 	- `ICINGAWEB2_MYSQL_DATA`: The database for icingaweb2 (defaults to `icingaweb2`)
 	- `ICINGAWEB2_DIRECTOR_MYSQL_DATA`: The database for icingaweb2 director (defaults to `icingaweb2_director`)
+  - `ICINGAWEB2_X509_MYSQL_DATA`: The database for the X.509 module (defaults to `icingaweb2_x509`)
 - `DEFAULT_MYSQL_USER`: The MySQL user to access the database (defaults to `icinga2`)
 - `DEFAULT_MYSQL_PASS`: The password for the MySQL user. (defaults to *randomly generated string*)
 
@@ -169,6 +171,9 @@ The variables default their respective `DEFAULT` service variable.
 | `ICINGA2_FEATURE_GRAPHITE_PORT` | 2003 | Carbon port for graphite |
 | `ICINGA2_FEATURE_GRAPHITE_URL` | http://${ICINGA2_FEATURE_GRAPHITE_HOST} | Web-URL for Graphite |
 | `ICINGA2_FEATURE_DIRECTOR` | true | Set to false or 0 to disable icingaweb2 director |
+| `ICINGA2_FEATURE_BUSINESSPROCESS` | false | Set to true to enable business process module |
+| `ICINGA2_FEATURE_X509` | false | Set to true or 1 to enable X.509 module |
+| `ICINGAWEB2_X509_IMPORT_DEFAULT_CAS` | false | Set to true of 1 to import default CAs already in `/etc/ssl/certs/ca-certificates.crt` |
 | `DIRECTOR_KICKSTART` | true | Set to false to disable icingaweb2 director's auto kickstart at container startup. *Value is only used, if icingaweb2 director is enabled.* |
 | `ICINGAWEB2_ADMIN_USER` | icingaadmin | Icingaweb2 Login User<br>*After changing the username, you should also remove the old User in icingaweb2-> Configuration-> Authentication-> Users* |
 | `ICINGAWEB2_ADMIN_PASS` | icinga | Icingaweb2 Login Password |
