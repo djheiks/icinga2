@@ -37,6 +37,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
       openssh-client \
       openssl \
       php-curl \
+      php-gmp \
       php-ldap \
       php-mysql \
       procps \
@@ -75,7 +76,7 @@ ARG GITREF_MODAWS=master
 ARG GITREF_BUSINESSPROCESS=master
 ARG GITREF_GRAFANA=master
 ARG GITREF_CUBE=master
-ARG GITREF_IPL=v0.2.0
+ARG GITREF_IPL=v0.2.1
 ARG GITREF_REACT=v0.5.1
 ARG GITREF_X509=master
 
