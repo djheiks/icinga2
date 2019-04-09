@@ -20,7 +20,6 @@ if [ ! "$(ls -A /etc/icinga2)" ]; then
 fi
 
 # chown directories and files that might be coming from volumes
-mkdir -p /var/log/icinga2/compat/archives
 chown -R nagios:adm /var/log/icinga2
 
 mkdir -p /var/lib/icinga2/api/zones
@@ -33,7 +32,7 @@ chown -R nagios:nagios /var/cache/icinga2
 chown -R nagios:root /etc/icinga2
 
 # enable necessary features
-icinga2 feature enable ido-mysql livestatus compatlog command
+icinga2 feature enable ido-mysql livestatus command
 
 #icinga2 API cert - regenerate new private key and certificate when running in a new container
 if [ ! -f "/var/lib/icinga2/certs/$(hostname).key" ]; then
