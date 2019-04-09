@@ -1,0 +1,15 @@
+#!/bin/bash
+
+. /opt/helpers
+
+if evaluate_boolean "${ICINGA2_FEATURE_VSPHEREDB}"; then
+    echo "Starting VSphereDB data collection"
+    icingacli vspheredb daemon run
+else
+    echo "Skipping VSphereDB data collection."; sleep infinity;
+fi
+
+# Allow any signal which would kill a process to stop server
+trap "service vspheredb stop" HUP INT QUIT ABRT ALRM TERM TSTP
+
+while pgrep -u nagios icingacli > /dev/null; do sleep 5; done
