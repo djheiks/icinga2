@@ -40,6 +40,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
       php-gmp \
       php-ldap \
       php-mysql \
+      php-soap \
       procps \
       pwgen \
       snmp \
@@ -79,6 +80,8 @@ ARG GITREF_CUBE=master
 ARG GITREF_IPL=v0.2.1
 ARG GITREF_REACT=v0.5.1
 ARG GITREF_X509=master
+ARG GITREF_INCUBATOR=v0.2.0
+ARG GITREF_VSPHERE=master
 
 RUN mkdir -p /usr/local/share/icingaweb2/modules/ \
 # Icinga Director
@@ -120,6 +123,14 @@ RUN mkdir -p /usr/local/share/icingaweb2/modules/ \
  && mkdir -p /usr/local/share/icingaweb2/modules/cube \
  && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-cube/archive/${GITREF_CUBE}.tar.gz" \
  | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/cube --exclude=.gitignore -f - \
+# Incubator (VSphere dependency)
+ && mkdir -p /usr/local/share/icingaweb2/modules/incubator \
+ && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-incubator/archive/${GITREF_INCUBATOR}.tar.gz" \
+ | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/incubator --exclude=.gitignore -f - \
+# VSphere
+ && mkdir -p /usr/local/share/icingaweb2/modules/vspheredb \
+ && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-vspheredb/archive/${GITREF_VSPHERE}.tar.gz" \
+ | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/vspheredb --exclude=.gitignore -f - \
  && true
 
 ADD content/ /
