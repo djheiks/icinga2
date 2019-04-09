@@ -1,0 +1,15 @@
+#!/bin/bash
+
+. /opt/helpers
+
+# Cube module
+if evaluate_boolean "${ICINGA2_FEATURE_CUBE}"; then
+	echo "=> Enabling Cube module"
+
+	# icingaweb-graphite
+	icingacli module enable cube
+
+else
+	# Actively disable cube, to not hit any weird bugs
+	icingacli module disable cube || true
+fi
