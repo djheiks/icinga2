@@ -4,6 +4,8 @@
 FROM debian:buster
 
 ENV APACHE2_HTTP=REDIRECT \
+    ICINGA2_FEATURE_BUSINESSPROCESS=false \
+    ICINGA2_FEATURE_CUBE=false \
     ICINGA2_FEATURE_GRAPHITE=false \
     ICINGA2_FEATURE_GRAPHITE_HOST=graphite \
     ICINGA2_FEATURE_GRAPHITE_PORT=2003 \
@@ -14,6 +16,7 @@ ENV APACHE2_HTTP=REDIRECT \
     ICINGA2_FEATURE_DIRECTOR="true" \
     ICINGA2_FEATURE_DIRECTOR_KICKSTART="true" \
     ICINGA2_FEATURE_DIRECTOR_USER="icinga2-director" \
+    ICINGA2_FEATURE_VSPHEREDB=false \
     MYSQL_ROOT_USER=root
 
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -111,9 +114,9 @@ RUN mkdir -p /usr/local/share/icingaweb2/modules/ \
  && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-businessprocess/archive/${GITREF_BUSINESSPROCESS}.tar.gz" \
  | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/businessprocess --exclude=.gitignore -f - \
 # React bundle
- && mkdir -p /usr/local/share/icingaweb2/modules/react \
+ && mkdir -p /usr/local/share/icingaweb2/modules/reactbundle \
  && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-reactbundle/archive/${GITREF_REACTBUNDLE}.tar.gz" \
- | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/react --exclude=.gitignore -f - \
+ | tar xz --strip-components=1 --directory=/usr/local/share/icingaweb2/modules/reactbundle --exclude=.gitignore -f - \
 # X509
  && mkdir -p /usr/local/share/icingaweb2/modules/x509 \
  && wget -q --no-cookies -O - "https://github.com/Icinga/icingaweb2-module-x509/archive/${GITREF_X509}.tar.gz" \
