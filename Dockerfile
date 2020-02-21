@@ -144,6 +144,7 @@ ADD content/ /
 # Final fixes
 RUN true \
     && sed -i 's/vars\.os.*/vars.os = "Docker"/' /etc/icinga2/conf.d/hosts.conf \
+    && sed -i '/disk_partitions/ s/^\(.*\)$/\/* \1 *\//' /etc/icinga2/conf.d/hosts.conf \
     && mv /etc/icingaweb2/ /etc/icingaweb2.dist \
     && mv /etc/icinga2/ /etc/icinga2.dist \
     && mkdir -p /etc/icinga2 \
